@@ -5,13 +5,10 @@ ENV DOCKER_CHANNEL=stable \
     DOCKER_COMPOSE_VERSION=1.26.2 \
     DOCKER_SQUASH=0.2.0
 
-# Install Docker, Docker Compose, Docker Squash
 RUN apk --update --no-cache add \
         bash \
         curl \
         device-mapper \
-        # py3-pip \
-        # python3-dev \
         iptables \
         util-linux \
         ca-certificates \
@@ -22,15 +19,8 @@ RUN apk --update --no-cache add \
         make \
 	docker \
 	docker-compose
+
 RUN apk upgrade
-# RUN /usr/bin/python3.7 -m pip install --upgrade pip
-# RUN curl -fL "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" | tar zx
-# RUN mv /docker/* /bin/ && chmod +x /bin/docker*
-# RUN pip3 install docker-compose==${DOCKER_COMPOSE_VERSION}
-# RUN curl -fL "https://github.com/jwilder/docker-squash/releases/download/v${DOCKER_SQUASH}/docker-squash-linux-amd64-v${DOCKER_SQUASH}.tar.gz" | tar zx
-# RUN mv /docker-squash* /bin/ && chmod +x /bin/docker-squash*
-# RUN rm -rf /var/cache/apk/*
-# RUN rm -rf /root/.cache
 
 COPY entrypoint.sh /bin/entrypoint.sh
 
