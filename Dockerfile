@@ -7,18 +7,20 @@ ENV DOCKER_CHANNEL=stable \
 
 RUN apk --update --no-cache add \
         bash \
+        ca-certificates \
         curl \
         device-mapper \
-        iptables \
-        util-linux \
-        ca-certificates \
+        docker \
+        docker-compose
         gcc \
+        gcompat \
+        iptables \
         libc-dev \
         libffi-dev \
-        openssl-dev \
         make \
-	docker \
-	docker-compose
+        openssl-dev \
+        util-linux \
+        sudo
 
 RUN apk upgrade
 
